@@ -9,7 +9,7 @@ def getLoanNumber():
     :return: (int) loan number
     """
     # Load the loan number
-    with open('../pickles/loanNumber.pk', 'rb') as fi:
+    with open('pickles/loanNumber.pk', 'rb') as fi:
         return pickle.load(fi)
     
     
@@ -19,7 +19,7 @@ def getDeed():
     :return: (int) deed
     """
     # Load the deed
-    with open('../pickles/deed.pk', 'rb') as fi:
+    with open('pickles/deed.pk', 'rb') as fi:
         return pickle.load(fi)
     
     
@@ -63,7 +63,7 @@ def getProgress(prent=True):
 
     # Print the current step
     if prent:
-        if len(config.progress) > 0:
+        if len(config.progress) > 1:
             print('Step ' + str(config.progress[len(config.progress)-1]) + ' complete')
         else:
             print('Initiating')

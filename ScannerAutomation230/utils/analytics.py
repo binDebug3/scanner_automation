@@ -9,7 +9,7 @@ def incDocCount():
     :return: None
     """
     # Load the scan record
-    with open('../pickles/scanRecord.pk', 'rb') as fi:
+    with open('pickles/scanRecord.pk', 'rb') as fi:
         scanRecord = pickle.load(fi)
         
     # Increment the document count
@@ -25,7 +25,7 @@ def incDocCount():
         scanRecord[config.todaysDate][config.documentType] = 1
         
     # Save the scan record
-    with open('../pickles/scanRecord.pk', 'wb') as fi:
+    with open('pickles/scanRecord.pk', 'wb') as fi:
         pickle.dump(scanRecord, fi)
 
 
@@ -35,13 +35,14 @@ def viewCount():
     :return: None
     """    
     # Load the scan record
-    with open('../pickles/scanRecord.pk', 'rb') as fi:
+    with open('pickles/scanRecord.pk', 'rb') as fi:
         scanRecord = pickle.load(fi)
         
     # Print the document count
     statsToday = scanRecord[config.todaysDate]
     print('You have scanned:')
-    
+
+    # format and print the scanning statistics
     if statsToday['SLP'] != 0:
         print('\tSLP:\t' + str(statsToday['SLP']) + ' documents')
     if statsToday['FNMA'] != 0:
@@ -68,11 +69,11 @@ def modStats(delay):
         return None
     
     # Save the scan time
-    with open('../pickles/scanLastSpeed.pk', 'wb') as fi:
+    with open('pickles/scanLastSpeed.pk', 'wb') as fi:
         pickle.dump(delay, fi)
-    with open('../pickles/scanTime.pk', 'rb') as fi:
+    with open('pickles/scanTime.pk', 'rb') as fi:
         scanTime = pickle.load(fi)
-    with open('../pickles/scanRecord.pk', 'rb') as fi:
+    with open('pickles/scanRecord.pk', 'rb') as fi:
         scanRecord = pickle.load(fi)
         
     # Modify the scan time
@@ -87,7 +88,7 @@ def modStats(delay):
         scanTime[config.todaysDate][config.documentType] = delay
         
     # Save the scan time
-    with open('../pickles/scanTime.pk', 'wb') as fi:
+    with open('pickles/scanTime.pk', 'wb') as fi:
         pickle.dump(scanTime, fi)
 
 
@@ -97,7 +98,7 @@ def viewSpeed():
     :return: None
     """
     # Load the scan time
-    with open('../pickles/scanTime.pk', 'rb') as fi:
+    with open('pickles/scanTime.pk', 'rb') as fi:
         scanTime = pickle.load(fi)
         
     # Print the scan time

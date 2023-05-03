@@ -1,34 +1,8 @@
 import random
 
-from fun import funCompliments
-from utils.helpers import *
+from utils.fun import funCompliments
 from utils.tracking import *
 from utils.format import *
-
-
-def openApps():
-    """
-    Opens the apps needed for the day
-    :return: None
-    """
-    # wait for things to load
-    gui.PAUSE = 1
-    gui.click(config.minimize)
-    scannerApp = waitToClick('images/scannerLogo.png')
-    byteApp = lookFor('images/byteLogo.png')
-    commentBox = lookFor('images/openCommentBox.png')
-    
-    # open the apps
-    gui.doubleClick(commentBox)
-    gui.doubleClick(scannerApp)
-    gui.PAUSE = config.SLOW
-    gui.doubleClick(byteApp)
-    
-    # wait for the user
-    gui.alert('Good morning, Winston here! Please start by entering your byte password:', 'Winston', 'I signed in!')
-    # scanTime = {'SLP': 0, 'FNMA': 0, 'GNMA': 0, 'settlement': 0, 'Note': 0}
-    # with open('scanTime.pk', 'wb') as fi:
-    #     pickle.dump(scanTime, fi)
     
     
 def printDetails():
@@ -79,13 +53,13 @@ def typeDocument():
     Helper function to print document details
     :return: None
     """
+    # print document type and pdf name
     gui.typewrite('Hey! It\'s Winston again. I value transparency so here\'s what I\'ve got.\n\n'
-                  'Document Type: ' + config.documentType + '\n'
-                                                            'Loan Number: ' + config.pdfName + '\n')
+                  'Document Type: ' + config.documentType + '\nLoan Number: ' + config.pdfName + '\n')
 
+    # print subtype and date
     if config.documentType == 'FNMA':
-        gui.typewrite('Deed: ' + config.subType + '\n'
-                                                  'Date: ' + formatDate(config.enterDate) + '\n')
+        gui.typewrite('Deed: ' + config.subType + '\nDate: ' + formatDate(config.enterDate) + '\n')
 
 
 def typeStatus():
@@ -93,14 +67,16 @@ def typeStatus():
     Helper function to print scanning status
     :return: None
     """
+    # start status report
     gui.typewrite('Status: ')
     printProgress = getProgress(False)
 
+    # check the success of the last scan and report step number
     if config.resumePosition == 0:
         gui.typewrite('Forced restart')
     elif 0 < config.resumePosition < 8 and 0 < printProgress < 8:
         gui.typewrite('Started at step ' + str(config.resumePosition))
-    elif 0 < config.resumePosition < 8 and printProgress == 0:
+    elif 8 > config.resumePosition > 0 == printProgress:
         gui.typewrite('Normal start')
     else:
         gui.typewrite('Auto-resume (' + str(config.firstStep) + ')')
@@ -113,7 +89,8 @@ def typeSpeed():
     Helper function to print scanning speed
     :return: None
     """
-    with open('../pickles/scanLastSpeed.pk', 'rb') as fi:
+    # open speed data
+    with open('pickles/scanLastSpeed.pk', 'rb') as fi:
         scanSpeed = pickle.load(fi)
 
     # append seconds if they are less than 60
@@ -146,23 +123,27 @@ def typeCompliment():
     Helper function to print a compliment
     :return: None
     """
+    # initialize indices for compliments and fun facts
     if config.complimentOn:
         if config.startIndex == 0:
             config.startIndex = 600
         else:
             config.startIndex = 0
 
+        # build a fun fact string
         index = random.randint(config.startIndex, len(funCompliments) - 1)
         if index > 106:
             insert = 'Also, did you know? :D\n'
             end = '.'
             factID = '#' + str(index - 104)
 
+        # build a compliment string
         else:
             insert = 'Anyways, I was just thinking\n'
             end = ' :)'
             factID = ''
 
+        # output compliment and fun fact
         gui.typewrite('\n\n' + insert + funCompliments[index] + end + '\n' + factID)
     config.detailsPrinted = True
         

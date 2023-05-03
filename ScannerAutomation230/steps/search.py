@@ -106,10 +106,15 @@ def inputQuery(firstNameBar, lastNameBar, propertyNameBar):
     :param propertyNameBar: (tuple) the center of the propertyNameBar
     :return: None
     """
+    # input first name
     gui.doubleClick(firstNameBar)
     gui.write(config.buyerFirst)
+
+    # input last name
     gui.doubleClick(lastNameBar)
     gui.write(config.buyerLast)
+
+    # input property
     gui.doubleClick(propertyNameBar)
     gui.write(config.propertyName)
     
@@ -120,6 +125,7 @@ def getEdges():
     :return: (tuple) the edges of the search result
     :return: (tuple) the region to search for the result
     """
+    # look for file name on the screen
     rEgdes = gui.locateOnScreen('images/fileName.png', grayscale=True, confidence=0.93)
 
     # if the file name is not visible, ask the user to make it visible
@@ -128,7 +134,8 @@ def getEdges():
                   'Winston', 'Ready')
         rEgdes = gui.locateOnScreen('images/fileName.png', grayscale=True, confidence=0.93)
     resultRegion = (rEgdes[0], rEgdes[1] + rEgdes[3], rEgdes[2] * 8, rEgdes[3] * 2)
-    
+
+    # return the region and the edges
     return resultRegion, rEgdes
 
 
@@ -138,6 +145,7 @@ def clear(clearButton):
     :param clearButton: 
     :return: 
     """
+    # press the clear button
     gui.PAUSE = config.MEDIUM
     gui.click(clearButton)
     gui.PAUSE = config.FAST
@@ -159,14 +167,17 @@ def clickResult(im, searchResult, searchDone):
     noResults = gui.locateOnScreen('images/noLoanFiles.png', grayscale=True, confidence=0.93)
     multipleResults = gui.locateOnScreen('images/multipleResults.png', grayscale=True, confidence=0.95)
 
+    # if no results appeared after the search, inform the user
     if noResults is not None:
         gui.alert('Uh oh. I don\'t see any loan files in the search results. Would you mind double checking the'
                   ' search query? Once your ready, click \'Ready\' after the search returns correctly', 'Winston',
                   'Ready')
 
+    # if multiple results appeared after the search, inform the user
     elif multipleResults is not None:
         gui.alert('Ah! There are too many search results! This is above my pay grade. '
                   'Please select the correct loan for me.', 'Winston', 'Ready')
 
+    # click on the result
     else:
         gui.doubleClick(searchResult)

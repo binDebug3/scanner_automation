@@ -9,6 +9,7 @@ def convertDoc(scanType):
     :param scanType: (string) the type of document to scan
     :return: 
     """
+    # convert scan type string to abbreviation
     if scanType == 'Pre Funding Package':
         return 'SLP'
     elif scanType == 'Note':
@@ -76,4 +77,5 @@ def formatDate(day):
     :param day: (string) the date to format
     :return: (string) the formatted date
     """
+    # return the formatted date
     return day[0] + day[1] + '/' + day[2] + day[3] + '/20' + day[4] + day[5]

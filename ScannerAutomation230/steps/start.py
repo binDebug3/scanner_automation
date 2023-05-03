@@ -4,6 +4,10 @@ from utils.output import *
 
 
 def start():
+    """
+    Start the scanning process by getting information about the document from the user
+    :return: None
+    """
     # useful variables
     confirm = None
     config.duplicate = False

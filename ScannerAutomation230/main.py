@@ -1,4 +1,5 @@
 from utils.analytics import *
+from utils.opener import *
 from utils.output import *
 from steps import search, inputDetails, start, mergePDF, scan, replaceFile, store
 
@@ -6,43 +7,41 @@ from steps import search, inputDetails, start, mergePDF, scan, replaceFile, stor
 def run():
     """
     This is the main function that runs the program. It will run through the steps of the program and then exit.
-    :return:
+    :return: None
     """
-    openApp = False
-    if openApp:
-        openApps()
+    # start of day and start of scanning process
+    initialize()
 
-    if 0 <= config.resumePosition < 8:
-        getProgress()
-        saveProgress(config.resumePosition + 1, True)
-
-    config.firstStep = getProgress()
-    config.documentType = convertDoc(config.documentType)
-    config.shippingDetails = ' Scanned ' + config.documentType + ' ' + config.todaysDate + ' ' + config.userInitials
-
+    # scan documents
     keepScanning = True
     while keepScanning:
-        gui.PAUSE = config.MEDIUM
-        gui.click(config.minimize)
-        config.detailsPrinted = False
+        # initialize variables and close pycharm window
+        minimize()
 
-        if not config.progress.__contains__(1):
+        # replace the file and start a new scanning process
+        if 1 not in config.progress:
             replaceFile.replaceFile()
+
             start.start()
 
+        # search for document in the system
         if config.subType != 'Quit':
-            if not config.progress.__contains__(2):
+            if 2 not in config.progress:
                 search.search()
 
+            # scan a new paper document
             scan.scan()
 
-            if not config.progress.__contains__(5):
+            # input document details
+            if 5 not in config.progress:
                 inputDetails.inputDetails()
 
-            if not config.progress.__contains__(6):
+            # merge PDFs
+            if 6 not in config.progress:
                 mergePDF.mergePDF()
 
-            if not config.progress.__contains__(7):
+            # save and store the document
+            if 7 not in config.progress:
                 store.storeDocuments()
 
         else:

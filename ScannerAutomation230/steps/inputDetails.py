@@ -30,6 +30,9 @@ def inputDetails():
     saveProgress(5)
 
 
+
+# helper functions ----------------------------------------------------------------------------------------------------
+
 def getDateButton():
     """
     Finds the date button and clicks it
@@ -48,8 +51,10 @@ def checkForCarol():
     Checks if the document needs to go to Carol
     :return: None
     """
+    # look for the indicator for a document for carol
     carolDoc = gui.locateOnScreen('images/carol.png', grayscale=True, confidence=0.97)
 
+    # report finding it if so
     if carolDoc is not None:
         gui.alert('I just realized... this is a document for Carol!', 'Winston')
 
@@ -109,6 +114,7 @@ def slipnslide():
     Scroll to the shipping information
     :return:
     """
+    # scroll to the shipping information
     gui.scroll(-100)
     startScroll = lookFor('images/hScrollBar.png')
     gui.moveTo(startScroll)

@@ -37,11 +37,12 @@ def waitToClick(pngName, xMod=0, yMod=0, conf=0.93, gray=True):
     """
     edges = None
 
+    # look for the image parameter until it is found
     while edges is None:
         edges = gui.locateOnScreen(pngName, grayscale=gray, confidence=conf)
 
+    # find and return the adjusted center
     clickLoc = gui.center(edges)
-
     return clickLoc[0] + xMod, clickLoc[1] + yMod
 
 
@@ -54,6 +55,7 @@ def lookFor(pngName):
     # if the file name is not visible, ask the user to make it visible
     center = gui.locateOnScreen(pngName, grayscale=True, confidence=0.93)
 
+    # report and error, then check again
     if center is None:
         gui.alert('Huh. I couldn\'t find the ' + pngName + '. Please make sure it is visible, then click \'Ready\'',
                   'Winston', 'Ready')
