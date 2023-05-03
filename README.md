@@ -31,8 +31,7 @@
 
 Hello! This is Winston, a simple function-based program to automate most of the scanning process at CMG Financial.
 He uses a module called pyautogui (Python Automated Graphical User Interface) to control the
-mouse and keyboard automatically. It's convenient because it makes my code pretty non technical - just a matter of
-telling the code where to click and when to type. Any changes to Byte, the Scanner, or the scanning process
+mouse and keyboard automatically. Any changes to Byte, the Scanner, or the scanning process
 will need to be updated in the code and the images if made after the code was last updated on May 17, 2022.
 
 
@@ -78,20 +77,20 @@ Despite the simple nature of Winston, he requires a bit of work to get him set u
 ## Instructions
 To scan a document, you will:
 
-1) Open up Byte and the Scanner app</br>
+1) <strong>Open up Byte and the Scanner App</strong></br>
         Make sure the Scan button is visible even when Byte is open, and that the
         Scan, Save, and Clear buttons are all visible when the Scanner app is open. Make sure Byte is big enough
         so that you can see any relevant information at one time, but not full screen. Use the gray field, and
         make the yellow field as small as possible, as Winston will not use that section of Byte.</br></br>
 
-2) Arrange your Files</br>
+2) <strong>Arrange your Files</strong></br>
         Make sure that each folder is visible on your desktop, including the one where you would
         like to save the PDFs you are currently scanning. Make sure there is a space visible at all times where
         the PDF can appear on the Desktop when saved. Please open arrangementScreenshot.png for an example. I
         haven't tested this but I think if you move the folders, it will mess Winston up and he won't be able
         to find them.</br></br>
 
-3) Open the PyCharm app</br>
+3) <strong>Open the PyCharm App</strong></br>
         Once open, click File --> Open... --> Users --> <YOUR_NAME> --> PyCharmProjects --> ScannerAutomation230
         then click the OK button. If you are working on the original computer, simply double click the
         PyCharm shortcut on the Desktop, and it should open to this program. The the file load for a minute or two, 
@@ -99,25 +98,25 @@ To scan a document, you will:
         are the default settings and what each variable does. Any time you want to change these variables, you must
         stop and rerun Winston in order to apply them.</br></br>
 
-    a) goFast = True. This variable will determine how fast Winston runs. It should only be set to false for
+    a) <strong>goFast</strong> = True. This variable will determine how fast Winston runs. It should only be set to false for
         training or demonstration purposes.</br>
 
-    b) complimentOn = True. This variable determines if you will get compliments and fun facts each time you scan.
+    b) <strong>complimentOn</strong> = True. This variable determines if you will get compliments and fun facts each time you scan.
         It defaults to True because it's cool and fun, but Winston is a polite guy so you can ask him to stop and
         he won't complain.</br>
 
-    c) permissionRequired = False. While this variable is true, Winston will pause and ask for permission before
+    c) <strong>permissionRequired</strong> = False. While this variable is true, Winston will pause and ask for permission before
         it clicks the 'Store Documents' button. It defaults to False because Winston runs faster and easier this
         way, and you should only set it to True if you are not sure Winston will consistently function 
         correctly.</br>
 
-    d) resumePosition = 9. This variable tells Winston where to start when you rerun his program. If it is less than
+    d) <strong>resumePosition</strong> = 9. This variable tells Winston where to start when you rerun his program. If it is less than
         zero or greater than seven, then Winston will assume you want to restart where you left off. If that is not
         the case, simply set this variable to the last step Winston should have completed already. You can find more
         information about what this means in the Checkpoints sections below. Just don't forget to reset it so that
         Winston knows where to resume automatically!</br>
 
-    e) documentType. This tells Winston what kind of document you are scanning. These strings must match the
+    e) <strong>documentType</strong>. This tells Winston what kind of document you are scanning. These strings must match the
         following options exactly:
 
         i.  Pre Funding Package
@@ -126,15 +125,15 @@ To scan a document, you will:
         iv. Note
         v.  Final Settlement
 
-    f) enterDate = '100721'. This variable tells Winston what to input for the dates of FNMA and GNMA documents.
+    f) <strong>enterDate</strong> = '100721'. This variable tells Winston what to input for the dates of FNMA and GNMA documents.
         If you are not scanning one of these documents, this value does not matter. As a reminder, you must restart
         Winston each time you change this value. It must be in the form: 'MMDDYY'</br>
 
-    g) userInitials = 'DS'. This variables tells Winston your initials. For example, if Dallin Stewart is
+    g) <strong>userInitials</strong> = 'DS'. This variables tells Winston your initials. For example, if Dallin Stewart is
         scanning, the initials should be DS. Winston only uses this variable if you are scanning a Note or a
         Pre Funding Package. As a reminder, you must restart Winston each time you change this value.</br></br>
 
-4) Enter the Loan Number</br>
+4) <strong>Enter the Loan Number</strong></br>
     a) Click the green triangle near the top right to run Winston.</br>
     b) PyCharm will close and a window will pop up.</br>
     c) If he asks for the type of document, use the mouse or the arrow keys to select the appropriate type.</br>
@@ -145,7 +144,7 @@ To scan a document, you will:
     f) If you do not enter a loan number, Winston will ask you for for the first name, last name, and
         property name corresponding to the loan. Enter this information as precisely and fully as possible.</br></br>
 
-5) Let Winston Run</br>
+5) <strong>Let Winston Run</strong></br>
    There is a slight flaw in Winston's design that I never bothered to fix. The first thing Winston actually does
    is close out of the previous loan file because that was the most efficient design. However, this means that if
    you are scanning something for the first time that day, you won't have any previous loans pulled up, but Winston
@@ -188,7 +187,9 @@ Winston divides the scanning process into seven distinct steps:
 
 At the end of each step and right before moving on to the next step, Winston records that you completed that step.
 This way, even if you catch a problem and want to stop Winston so that you can fix it, you can start right where
-you left off without having to restart the scanning process or finishing the document manually. If you use this
+you left off without having to restart the scanning process or finishing the document manually. 
+
+If you use this
 feature, please ensure that you know exactly where in the scanning process you are. If you are not sure, you can
 open the PyCharms application where Winston prints your progress at each step. If you would like to reset your
 progress, simply set the 'resumePosition' variable to zero. Just be sure change it back to 9 the next time you run,
@@ -261,8 +262,11 @@ and Winston will take things from there.
 
 
 ## Code Overview
+Everything in this section is still true, but since I refactored the code in 2023 with more of an emphasis on the single 
+responsibility principle, there are a lot more methods and moving parts than described here.
+
 I've divided the scanning process into six major steps, reflected by six of the files in the steps folder: start, search, scan,
-inputDetails, mergePDF, and store. The 'run' function in main calls the everything else in the correct order.
+inputDetails, mergePDF, and store. The 'run' function in main calls everything else in the correct order.
 The rest of the functions are simply shorter helper functions for the six steps. You can read through the comments in
 each of the six steps along with the code itself to understand what is going on. If you are having a problem where
 Winston seems to stop for no reason, or does the wrong thing, that is the best place to look.
