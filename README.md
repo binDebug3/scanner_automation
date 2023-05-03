@@ -100,22 +100,22 @@ To scan a document, you will:
         stop and rerun Winston in order to apply them.</br></br>
 
     a) goFast = True. This variable will determine how fast Winston runs. It should only be set to false for
-        training or demonstration purposes.</br></br>
+        training or demonstration purposes.</br>
 
     b) complimentOn = True. This variable determines if you will get compliments and fun facts each time you scan.
         It defaults to True because it's cool and fun, but Winston is a polite guy so you can ask him to stop and
-        he won't complain.</br></br>
+        he won't complain.</br>
 
     c) permissionRequired = False. While this variable is true, Winston will pause and ask for permission before
         it clicks the 'Store Documents' button. It defaults to False because Winston runs faster and easier this
         way, and you should only set it to True if you are not sure Winston will consistently function 
-        correctly.</br></br>
+        correctly.</br>
 
     d) resumePosition = 9. This variable tells Winston where to start when you rerun his program. If it is less than
         zero or greater than seven, then Winston will assume you want to restart where you left off. If that is not
         the case, simply set this variable to the last step Winston should have completed already. You can find more
         information about what this means in the Checkpoints sections below. Just don't forget to reset it so that
-        Winston knows where to resume automatically!</br></br>
+        Winston knows where to resume automatically!</br>
 
     e) documentType. This tells Winston what kind of document you are scanning. These strings must match the
         following options exactly:
@@ -128,7 +128,7 @@ To scan a document, you will:
 
     f) enterDate = '100721'. This variable tells Winston what to input for the dates of FNMA and GNMA documents.
         If you are not scanning one of these documents, this value does not matter. As a reminder, you must restart
-        Winston each time you change this value. It must be in the form: 'MMDDYY'</br></br>
+        Winston each time you change this value. It must be in the form: 'MMDDYY'</br>
 
     g) userInitials = 'DS'. This variables tells Winston your initials. For example, if Dallin Stewart is
         scanning, the initials should be DS. Winston only uses this variable if you are scanning a Note or a
@@ -216,15 +216,15 @@ function of the 'store' file in the 'steps' directory. It should be on line 15.
 ## Arrangements
 Before you begin scanning please make sure that the following conditions are met:</br>
 
-    1. All four folders are visible are the left-hand side of the screen and the icons look like folders with PDFs in 
-       them. Make sure they are labeled 'SLP', 'Notes', 'settlement', and 'FNMA' respectively
-    2. The Scan button on the Fujistu scanner app is visible at all times, even when Byte overlaps part of the scanner
-       app
-    3. The note labeled 'Winston' is open on the right side of the screen so that it never overlaps with Byte</br>
-    4. When a loan is open in Byte, the gray sections predominates the window. In addition, the 'Shipping' shortcut
-       should be right above the 'Scanned Documents' shortcut, and visible even when the scanner app is open</br>
-    5. Don't change the size or resolution of the PC or any of the applications unless absolutely necessary. Most
-       changes will not affect Winston, but some will so it's better to just avoid that problem entirely</br>
+1. All four folders are visible are the left-hand side of the screen and the icons look like folders with PDFs in 
+   them. Make sure they are labeled 'SLP', 'Notes', 'settlement', and 'FNMA' respectively
+2. The Scan button on the Fujistu scanner app is visible at all times, even when Byte overlaps part of the scanner
+   app
+3. The note labeled 'Winston' is open on the right side of the screen so that it never overlaps with Byte</br>
+4. When a loan is open in Byte, the gray sections predominates the window. In addition, the 'Shipping' shortcut
+   should be right above the 'Scanned Documents' shortcut, and visible even when the scanner app is open</br>
+5. Don't change the size or resolution of the PC or any of the applications unless absolutely necessary. Most
+   changes will not affect Winston, but some will so it's better to just avoid that problem entirely</br>
 
 <p align="right">(<a href="#readme-top">top</a>)</p>
 
@@ -331,6 +331,8 @@ Thanks to Katie Stewart for her role as a beta tester.
 ## Notes
 Please feel free to include other notes and comments, including helpful hints, oversights in the code, and common
 mistakes for your own benefit and the benefit of other future users below.
+
+<p align="right">(<a href="#readme-top">top</a>)</p>
 
 
 
