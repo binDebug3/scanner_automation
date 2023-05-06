@@ -35,7 +35,7 @@ def search():
         
         # get the search result
         resultRegion, rEdges = getEdges()
-        searchResult, searchDone, im = getResult(resultRegion, rEdges)
+        searchResult, searchDone, im = getSearchResult(resultRegion, rEdges)
         
         # modify the documentID to be searchable
         if config.documentID == '':
@@ -79,7 +79,7 @@ def returnToSearch():
     gui.doubleClick(removeButton)
     
     
-def getResult(resultRegion, rEgdes):
+def getSearchResult(resultRegion, rEgdes):
     """
     Get the result of the search
     :param resultRegion: (tuple) the region to search for the result

@@ -29,7 +29,7 @@
 
 ## Introduction
 
-Hello! This is Winston, a simple function-based program to automate most of the scanning process at CMG Financial.
+Hello! This is Winston, a function-based program to automate most of the scanning process at a mortgage company.
 He uses a module called pyautogui (Python Automated Graphical User Interface) to control the
 mouse and keyboard automatically. Any changes to Byte, the Scanner, or the scanning process
 will need to be updated in the code and the images if made after the code was last updated on May 17, 2022.
@@ -116,24 +116,33 @@ To scan a document, you will:
         information about what this means in the Checkpoints sections below. Just don't forget to reset it so that
         Winston knows where to resume automatically!</br>
 
-    e) <strong>documentType</strong>. This tells Winston what kind of document you are scanning. These strings must match the
-        following options exactly:
+        resumePosition = ...
+        1: skip to searching for a new document
+        2: skip to scanning a document
+        3: skip to waiting for a document to finish scanning and then save the PDF
+        4: skip to inputing document details in Byte
+        5: skip to merging the PDF
+        6: skip to storing the document
+        7: skip the entire process and just view scanning statistics
 
-        i.  Pre Funding Package
-        ii. FNMA
-        iii.GNMA
-        iv. Note
-        v.  Final Settlement
+    e) <strong>documentType</strong>. This tells Winston what kind of document you are scanning. These strings must match the
+           following options exactly:
+
+           i.  Pre Funding Package
+           ii. FNMA
+           iii.GNMA
+           iv. Note
+           v.  Final Settlement
 
     f) <strong>enterDate</strong> = '100721'. This variable tells Winston what to input for the dates of FNMA and GNMA documents.
-        If you are not scanning one of these documents, this value does not matter. As a reminder, you must restart
-        Winston each time you change this value. It must be in the form: 'MMDDYY'</br>
+           If you are not scanning one of these documents, this value does not matter. As a reminder, you must restart
+           Winston each time you change this value. It must be in the form: 'MMDDYY'</br>
 
     g) <strong>userInitials</strong> = 'DS'. This variables tells Winston your initials. For example, if Dallin Stewart is
-        scanning, the initials should be DS. Winston only uses this variable if you are scanning a Note or a
-        Pre Funding Package. As a reminder, you must restart Winston each time you change this value.</br></br>
+           scanning, the initials should be DS. Winston only uses this variable if you are scanning a Note or a
+           Pre Funding Package. As a reminder, you must restart Winston each time you change this value.</br></br>
 
-4) <strong>Enter the Loan Number</strong></br>
+5) <strong>Enter the Loan Number</strong></br>
     a) Click the green triangle near the top right to run Winston.</br>
     b) PyCharm will close and a window will pop up.</br>
     c) If he asks for the type of document, use the mouse or the arrow keys to select the appropriate type.</br>
@@ -144,7 +153,7 @@ To scan a document, you will:
     f) If you do not enter a loan number, Winston will ask you for for the first name, last name, and
         property name corresponding to the loan. Enter this information as precisely and fully as possible.</br></br>
 
-5) <strong>Let Winston Run</strong></br>
+6) <strong>Let Winston Run</strong></br>
    There is a slight flaw in Winston's design that I never bothered to fix. The first thing Winston actually does
    is close out of the previous loan file because that was the most efficient design. However, this means that if
    you are scanning something for the first time that day, you won't have any previous loans pulled up, but Winston

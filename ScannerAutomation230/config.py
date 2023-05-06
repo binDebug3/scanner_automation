@@ -2,18 +2,18 @@
 # You can change the variables below -----------------------------------------------------------------------------------
 
 
-goFast = True                           # go as fast as possible, or go slow enough for user intervention
-complimentOn = True                     # Get a compliment or fun fact with each scan
+goFast = True                           # True to go as fast as possible, or go slow enough for user intervention
+complimentOn = True                     # True will print a compliment or fun fact with each scan
 permissionRequired = True               # True tells Winston to ask for permission before finishing
 
-# 0 to restart, -1, 8, or 9 to resume
-resumePosition = 0                      # use this to tell Winston exactly where to restart, options above
+# 0 to restart, -1, 8, or 9 to resume. 1-7 are specific steps (see README for more details)
+resumePosition = 9                      # use this to tell Winston exactly where to restart, options above
 
 
 # Document Type Options:    Pre Funding Package   |   FNMA   |   GNMA   |   Note   |   Final Settlement
-documentType = 'Pre Funding Package'    # Copy and paste from the options above
+documentType = 'Pre Funding Package'    # The type of document you want to scan. Copy and paste from the options above
 
-enterDate = '051523'                    # Format: MMDDYY
+enterDate = '051523'                    # Today's date in MMDDYY format
 
 userInitials = 'LS'                     # your initials to sign your scanned documents with
 
