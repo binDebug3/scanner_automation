@@ -3,7 +3,7 @@
 <div align="center">
     <h1 align="center">Winston</h1>
     <p align="center">
-        A custom process automation software for scanning documents and data entry
+        A custom process automation software for scanning documents and data entry by Dallin Stewart
     </p>
 </div>
 
